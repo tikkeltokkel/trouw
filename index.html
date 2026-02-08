@@ -1,0 +1,2185 @@
+<!DOCTYPE html>
+<html lang="nl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Judith & Simon — 22 mei 2027</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cream: '#FDF8F0',
+                        'cream-dark': '#F5EDE0',
+                        gold: '#C9A84C',
+                        'gold-light': '#D4B96A',
+                        'gold-dark': '#B8933A',
+                        dark: '#2C2C2C',
+                        sage: '#A3B18A',
+                        dusty: '#D4A5A5',
+                    },
+                    fontFamily: {
+                        serif: ['Cormorant Garamond', 'Georgia', 'serif'],
+                        script: ['Great Vibes', 'cursive'],
+                        sans: ['Montserrat', 'Helvetica', 'Arial', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Base styles */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #FDF8F0;
+            color: #2C2C2C;
+            overflow-x: hidden;
+        }
+
+        /* Subtle background pattern */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: radial-gradient(circle at 1px 1px, rgba(201,168,76,0.06) 1px, transparent 0);
+            background-size: 40px 40px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Hero section */
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .hero-image-base {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('1.jpg');
+            background-size: cover;
+            background-position: center;
+            z-index: 1;
+        }
+
+        .hero-image-base::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.3);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding-top: 18vh;
+            height: 100%;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-content .names {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(3rem, 8vw, 7rem);
+            font-weight: 300;
+            letter-spacing: 0.05em;
+            line-height: 1.1;
+            transition: color 0.3s ease;
+        }
+
+        .hero-content .names span:first-child {
+            display: inline-block;
+            transform: rotate(-3deg) translateY(4px);
+        }
+
+        .hero-content .names .ampersand {
+            transform: none;
+        }
+
+        .hero-content .names .ampersand svg {
+            width: 0.75em;
+            height: 0.75em;
+        }
+
+        .hero-content .names span:last-child {
+            display: inline-block;
+            transform: rotate(3deg) translateY(4px);
+        }
+
+        .hero-content .ampersand {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 0.15em;
+            height: 1em;
+            animation: heartbeat 2s ease-in-out infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            14% { transform: scale(1.15); }
+            28% { transform: scale(1); }
+            42% { transform: scale(1.1); }
+            56% { transform: scale(1); }
+        }
+
+        .hero-content .date {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(0.9rem, 2vw, 1.3rem);
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            margin-top: 0.8rem;
+            font-weight: 300;
+            transition: color 0.3s ease;
+        }
+
+        .hero-content .location {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(0.7rem, 1.5vw, 1rem);
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            margin-top: 0.5rem;
+            font-weight: 200;
+            opacity: 0.85;
+            transition: color 0.3s ease;
+        }
+
+        /* Sparkle particles */
+        .sparkle-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9998;
+        }
+
+        /* Scroll indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            animation: bounce 2s infinite;
+            cursor: pointer;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-12px); }
+            60% { transform: translateX(-50%) translateY(-6px); }
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0; left: 0; width: 100%;
+            z-index: 100;
+            transition: all 0.4s ease;
+            padding: 1.2rem 0;
+        }
+
+        .navbar.scrolled {
+            background: rgba(253, 248, 240, 0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: 0 1px 20px rgba(0,0,0,0.06);
+            padding: 0.8rem 0;
+        }
+
+        .navbar.scrolled .nav-link {
+            color: #2C2C2C;
+        }
+
+        .navbar.scrolled .nav-logo {
+            color: #2C2C2C;
+        }
+
+        .nav-link {
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            font-weight: 400;
+            text-decoration: none;
+            padding: 0.5rem 0;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0;
+            width: 0; height: 1.5px;
+            background: #C9A84C;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .nav-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: white;
+            letter-spacing: 0.1em;
+            transition: color 0.3s ease;
+        }
+
+        /* Mobile menu */
+        .mobile-menu {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100vh;
+            background: rgba(253, 248, 240, 0.98);
+            backdrop-filter: blur(20px);
+            z-index: 200;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+        }
+
+        .mobile-menu.open {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .mobile-menu .nav-link {
+            color: #2C2C2C;
+            font-size: 1.1rem;
+            letter-spacing: 0.2em;
+        }
+
+        /* Hamburger */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            z-index: 300;
+        }
+
+        .hamburger span {
+            width: 24px;
+            height: 1.5px;
+            background: white;
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled .hamburger span {
+            background: #2C2C2C;
+        }
+
+        .hamburger.open span:nth-child(1) {
+            transform: rotate(45deg) translate(4px, 5px);
+            background: #2C2C2C;
+        }
+
+        .hamburger.open span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.open span:nth-child(3) {
+            transform: rotate(-45deg) translate(4px, -5px);
+            background: #2C2C2C;
+        }
+
+        @media (max-width: 768px) {
+            .hamburger { display: flex; }
+            .nav-links-desktop { display: none !important; }
+        }
+
+        /* Section styles */
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 300;
+            text-align: center;
+            color: #2C2C2C;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-divider {
+            width: 80px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #C9A84C, transparent);
+            margin: 0 auto 3rem;
+            position: relative;
+        }
+
+        .section-divider::before {
+            content: '✦';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #C9A84C;
+            font-size: 0.7rem;
+            background: #FDF8F0;
+            padding: 0 0.8rem;
+        }
+
+        .alt-bg .section-divider::before {
+            background: #F5EDE0;
+        }
+
+        /* Countdown */
+        .countdown-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 300;
+            color: #2C2C2C;
+            line-height: 1;
+        }
+
+        .countdown-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: #C9A84C;
+            margin-top: 0.3rem;
+            font-weight: 400;
+        }
+
+        .countdown-separator {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: #C9A84C;
+            opacity: 0.5;
+            align-self: flex-start;
+            margin-top: 0.5rem;
+        }
+
+        /* Timeline */
+        .timeline-wrapper {
+            position: relative;
+        }
+
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: rgba(201,168,76,0.15);
+            transform: translateX(-50%);
+        }
+
+        .timeline-line-fill {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            width: 1px;
+            height: 0;
+            background: linear-gradient(to bottom, #C9A84C, #D4B96A);
+            transform: translateX(-50%);
+            transition: height 0.05s linear;
+        }
+
+        @media (max-width: 768px) {
+            .timeline-line,
+            .timeline-line-fill {
+                left: 1.5rem;
+            }
+        }
+
+        /* Timeline dots */
+        .timeline-marker {
+            width: 14px;
+            height: 14px;
+            border: 2px solid rgba(201,168,76,0.3);
+            border-radius: 50%;
+            background: #F5EDE0;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 2rem;
+            z-index: 2;
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .timeline-marker.passed {
+            border-color: #C9A84C;
+            background: #C9A84C;
+            box-shadow: 0 0 0 4px rgba(201,168,76,0.12);
+        }
+
+        @media (max-width: 768px) {
+            .timeline-marker {
+                left: 1.5rem;
+            }
+        }
+
+        /* Infinity symbol at end of timeline */
+        .timeline-infinity {
+            opacity: 0;
+            transition: opacity 0.6s ease;
+        }
+
+        .timeline-infinity.visible {
+            opacity: 1;
+        }
+
+        .infinity-path {
+            stroke-dasharray: 120;
+            stroke-dashoffset: 120;
+            transition: stroke-dashoffset 2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .timeline-infinity.visible .infinity-path {
+            stroke-dashoffset: 0;
+        }
+
+        /* Program timeline */
+        .program-timeline {
+            position: relative;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .program-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: rgba(201,168,76,0.15);
+            transform: translateX(-50%);
+        }
+
+        .program-line-fill {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            width: 1px;
+            height: 0;
+            background: linear-gradient(to bottom, #C9A84C, #D4B96A);
+            transform: translateX(-50%);
+            transition: height 0.05s linear;
+        }
+
+        .program-item {
+            position: relative;
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 0;
+            align-items: center;
+            min-height: 60px;
+        }
+
+        .program-item-left {
+            text-align: right;
+            padding-right: 2rem;
+        }
+
+        .program-item-right {
+            text-align: left;
+            padding-left: 2rem;
+        }
+
+        .program-dot-wrap {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .program-dot {
+            width: 14px;
+            height: 14px;
+            border: 2px solid rgba(201,168,76,0.4);
+            border-radius: 50%;
+            background: #FDF8F0;
+            position: relative;
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .program-dot.active {
+            width: 16px;
+            height: 16px;
+            border-color: #C9A84C;
+            background: #C9A84C;
+            box-shadow: 0 0 0 4px rgba(201,168,76,0.15), 0 0 20px rgba(201,168,76,0.2);
+        }
+
+        .program-dot.active::after {
+            content: '';
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 6px; height: 6px;
+            background: #FDF8F0;
+            border-radius: 50%;
+        }
+
+        .program-dot-ring {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 30px; height: 30px;
+            border: 1px solid rgba(201,168,76,0);
+            border-radius: 50%;
+            transition: all 0.6s ease;
+        }
+
+        .program-dot.active ~ .program-dot-ring {
+            border-color: rgba(201,168,76,0.15);
+            animation: dotPulse 2s ease-out infinite;
+        }
+
+        @keyframes dotPulse {
+            0% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+            100% { transform: translate(-50%, -50%) scale(2.2); opacity: 0; }
+        }
+
+        .program-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px; height: 32px;
+            border-radius: 50%;
+            background: rgba(201,168,76,0.08);
+            margin-bottom: 0.3rem;
+            opacity: 0;
+            transform: scale(0.5);
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .program-item.revealed .program-icon {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .program-time {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            font-weight: 500;
+            color: #C9A84C;
+            line-height: 1;
+            opacity: 0;
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .program-item.revealed .program-time {
+            opacity: 1;
+        }
+
+        .program-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.15rem;
+            font-weight: 400;
+            color: #2C2C2C;
+            margin-top: 0.15rem;
+            opacity: 0;
+            transition: opacity 0.6s ease 0.1s, transform 0.6s ease 0.1s;
+        }
+
+        .program-item.revealed .program-title {
+            opacity: 1;
+        }
+
+        .program-desc {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.7rem;
+            color: rgba(44,44,44,0.5);
+            font-weight: 300;
+            margin-top: 0.2rem;
+            opacity: 0;
+            transition: opacity 0.6s ease 0.2s;
+        }
+
+        .program-item.revealed .program-desc {
+            opacity: 1;
+        }
+
+        /* Left items slide from left, right from right */
+        .program-item .program-item-left .program-time {
+            transform: translateX(20px);
+        }
+        .program-item.revealed .program-item-left .program-time {
+            transform: translateX(0);
+        }
+        .program-item .program-item-left .program-title {
+            transform: translateX(20px);
+        }
+        .program-item.revealed .program-item-left .program-title {
+            transform: translateX(0);
+        }
+
+        .program-item .program-item-right .program-time {
+            transform: translateX(-20px);
+        }
+        .program-item.revealed .program-item-right .program-time {
+            transform: translateX(0);
+        }
+        .program-item .program-item-right .program-title {
+            transform: translateX(-20px);
+        }
+        .program-item.revealed .program-item-right .program-title {
+            transform: translateX(0);
+        }
+
+        /* Mobile: single column */
+        @media (max-width: 768px) {
+            .program-item {
+                grid-template-columns: auto 1fr;
+                gap: 0;
+            }
+            .program-item-left {
+                display: none;
+            }
+            .program-item-right {
+                padding-left: 1.2rem;
+                text-align: left;
+            }
+            .program-dot-wrap {
+                width: 36px; height: 36px;
+            }
+            .program-line,
+            .program-line-fill {
+                left: 18px;
+            }
+            .program-item .program-item-right .program-time,
+            .program-item .program-item-right .program-title {
+                transform: translateX(-10px);
+            }
+            .program-item.revealed .program-item-right .program-time,
+            .program-item.revealed .program-item-right .program-title {
+                transform: translateX(0);
+            }
+        }
+
+        /* RSVP */
+        .rsvp-toggle {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .rsvp-toggle-btn {
+            padding: 0.8rem 2rem;
+            border: 1.5px solid #C9A84C;
+            background: transparent;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.8rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: #2C2C2C;
+        }
+
+        .rsvp-toggle-btn.selected {
+            background: #C9A84C;
+            color: white;
+        }
+
+        .rsvp-toggle-btn:hover {
+            background: rgba(201,168,76,0.15);
+        }
+
+        .rsvp-toggle-btn.selected:hover {
+            background: #B8933A;
+        }
+
+        .counter-btn {
+            width: 36px; height: 36px;
+            border: 1.5px solid #C9A84C;
+            background: transparent;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            color: #2C2C2C;
+        }
+
+        .counter-btn:hover {
+            background: #C9A84C;
+            color: white;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 0.9rem 1.2rem;
+            border: 1px solid rgba(201,168,76,0.3);
+            background: rgba(255,255,255,0.6);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            color: #2C2C2C;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            outline: none;
+        }
+
+        .form-input:focus {
+            border-color: #C9A84C;
+            box-shadow: 0 0 0 3px rgba(201,168,76,0.1);
+        }
+
+        .form-input::placeholder {
+            color: #999;
+            font-weight: 300;
+        }
+
+        .btn-gold {
+            background: linear-gradient(135deg, #C9A84C, #D4B96A);
+            color: white;
+            border: none;
+            padding: 1rem 3rem;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.8rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-gold:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 30px rgba(201,168,76,0.3);
+        }
+
+        .btn-gold::after {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%; width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn-gold:hover::after {
+            left: 100%;
+        }
+
+        /* Confetti */
+        .confetti-piece {
+            position: fixed;
+            z-index: 9999;
+            pointer-events: none;
+            animation: confettiFall 3s ease-out forwards;
+        }
+
+        @keyframes confettiFall {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+        }
+
+        /* Gift panel */
+        .gift-panel {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease, padding 0.5s ease;
+        }
+
+        .gift-panel.open {
+            max-height: 300px;
+            padding: 1.5rem;
+        }
+
+        /* Animate on scroll */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Ornament corners */
+        .ornament-corner {
+            position: relative;
+        }
+
+        .ornament-corner::before,
+        .ornament-corner::after {
+            content: '✦';
+            position: absolute;
+            color: #C9A84C;
+            font-size: 0.6rem;
+            opacity: 0.5;
+        }
+
+        .ornament-corner::before {
+            top: -1rem;
+            left: -1rem;
+        }
+
+        .ornament-corner::after {
+            bottom: -1rem;
+            right: -1rem;
+        }
+
+        /* Timeline image animations */
+        .tl-img-wrap {
+            position: relative;
+            overflow: hidden;
+            border-radius: 4px;
+        }
+
+        .tl-img-wrap::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(135deg, rgba(201,168,76,0.08) 0%, transparent 50%);
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .tl-img-inner {
+            display: block;
+            width: 100%;
+            mix-blend-mode: multiply;
+            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .tl-img-wrap:hover .tl-img-inner {
+            transform: scale(1.05);
+        }
+
+        /* Reveal clip animation */
+        .tl-reveal-left {
+            clip-path: inset(0 100% 0 0);
+            transition: clip-path 1s cubic-bezier(0.77, 0, 0.175, 1);
+        }
+
+        .tl-reveal-right {
+            clip-path: inset(0 0 0 100%);
+            transition: clip-path 1s cubic-bezier(0.77, 0, 0.175, 1);
+        }
+
+        .tl-reveal-up {
+            clip-path: inset(100% 0 0 0);
+            transition: clip-path 1s cubic-bezier(0.77, 0, 0.175, 1);
+        }
+
+        .tl-reveal-left.revealed,
+        .tl-reveal-right.revealed,
+        .tl-reveal-up.revealed {
+            clip-path: inset(0 0 0 0);
+        }
+
+        /* Floating parallax on scroll */
+        .tl-float {
+            transition: transform 0.3s ease-out;
+        }
+
+        /* Decorative frame line */
+        .tl-frame {
+            position: absolute;
+            border: 1px solid rgba(201,168,76,0.25);
+            border-radius: 4px;
+            top: -8px;
+            left: -8px;
+            right: -8px;
+            bottom: -8px;
+            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            pointer-events: none;
+        }
+
+        .tl-img-wrap:hover .tl-frame {
+            top: -12px;
+            left: -12px;
+            right: -12px;
+            bottom: -12px;
+            border-color: rgba(201,168,76,0.4);
+        }
+
+        /* Color swatches */
+        .color-swatch {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            border: 2px solid rgba(255,255,255,0.8);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .color-swatch:hover {
+            transform: scale(1.1);
+        }
+
+        /* Parallax */
+        .parallax-bg {
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+        }
+
+        @media (max-width: 768px) {
+            .parallax-bg {
+                background-attachment: scroll;
+            }
+        }
+
+        /* Floral bg accents */
+        .floral-accent {
+            position: absolute;
+            opacity: 0.03;
+            pointer-events: none;
+            font-size: 15rem;
+            color: #C9A84C;
+        }
+
+        /* Smooth number transition */
+        .flip-number {
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+
+        /* Map container */
+        .map-container {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FDF8F0;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #C9A84C;
+            border-radius: 3px;
+        }
+
+        /* Confirmation overlay */
+        .rsvp-confirmation {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(253,248,240,0.95);
+            z-index: 500;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.5s ease;
+        }
+
+        .rsvp-confirmation.show {
+            opacity: 1;
+            pointer-events: all;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION -->
+    <nav class="navbar" id="navbar">
+        <div class="max-w-7xl mx-auto px-6 flex items-center justify-between">
+            <a href="#hero" class="nav-logo">J <svg class="inline-block -mt-0.5" width="16" height="16" viewBox="0 0 24 24" fill="#C9A84C"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg> S</a>
+
+            <div class="nav-links-desktop flex items-center gap-8">
+                <a href="#verhaal" class="nav-link" data-section="verhaal">Ons Verhaal</a>
+                <a href="#programma" class="nav-link" data-section="programma">Programma</a>
+                <a href="#locatie" class="nav-link" data-section="locatie">Locatie</a>
+                <a href="#dresscode" class="nav-link" data-section="dresscode">Dresscode</a>
+                <a href="#cadeau" class="nav-link" data-section="cadeau">Cadeau</a>
+                <a href="#rsvp" class="nav-link" data-section="rsvp">RSVP</a>
+            </div>
+
+            <div class="hamburger" id="hamburger" onclick="toggleMobileMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#verhaal" class="nav-link" onclick="closeMobileMenu()">Ons Verhaal</a>
+        <a href="#programma" class="nav-link" onclick="closeMobileMenu()">Programma</a>
+        <a href="#locatie" class="nav-link" onclick="closeMobileMenu()">Locatie</a>
+        <a href="#dresscode" class="nav-link" onclick="closeMobileMenu()">Dresscode</a>
+        <a href="#cadeau" class="nav-link" onclick="closeMobileMenu()">Cadeau</a>
+        <a href="#rsvp" class="nav-link" onclick="closeMobileMenu()">RSVP</a>
+    </div>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="hero">
+        <div class="hero-image-base"></div>
+
+        <div class="hero-content" id="heroContent">
+            <h1 class="names">
+                <span>Judith</span> <span class="ampersand"><svg class="inline-block" width="0.6em" height="0.6em" viewBox="0 0 24 24" fill="#C9A84C" xmlns="http://www.w3.org/2000/svg"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></span> <span>Simon</span>
+            </h1>
+            <p class="date">22 mei 2027</p>
+            <p class="location">Kasteel van Zwijnaarde</p>
+        </div>
+
+        <div class="scroll-indicator" onclick="document.getElementById('countdown').scrollIntoView({behavior:'smooth'})">
+            <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M15 5 L15 22 M8 16 L15 23 L22 16" stroke="rgba(255,255,255,0.7)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <p style="color: rgba(255,255,255,0.6); font-family: 'Montserrat', sans-serif; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; text-align: center; margin-top: 0.3rem;">Ontdek meer</p>
+        </div>
+    </section>
+
+    <!-- COUNTDOWN SECTION -->
+    <section id="countdown" class="py-20 md:py-28 bg-cream relative">
+        <div class="floral-accent top-0 right-0">❀</div>
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="text-center mb-12 animate-on-scroll">
+                <p class="font-script text-gold text-2xl md:text-3xl mb-2">Aftellen naar</p>
+                <h2 class="section-title">De Grote Dag</h2>
+                <div class="section-divider"></div>
+            </div>
+            <div class="flex items-center justify-center gap-4 md:gap-8 animate-on-scroll" style="transition-delay: 200ms;">
+                <div class="text-center">
+                    <div class="countdown-number" id="cd-days">---</div>
+                    <div class="countdown-label">Dagen</div>
+                </div>
+                <div class="countdown-separator">:</div>
+                <div class="text-center">
+                    <div class="countdown-number" id="cd-hours">--</div>
+                    <div class="countdown-label">Uren</div>
+                </div>
+                <div class="countdown-separator">:</div>
+                <div class="text-center">
+                    <div class="countdown-number" id="cd-minutes">--</div>
+                    <div class="countdown-label">Minuten</div>
+                </div>
+                <div class="countdown-separator">:</div>
+                <div class="text-center">
+                    <div class="countdown-number" id="cd-seconds">--</div>
+                    <div class="countdown-label">Seconden</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ONS VERHAAL SECTION -->
+    <section id="verhaal" class="py-20 md:py-28 bg-cream-dark alt-bg relative">
+        <div class="floral-accent bottom-0 left-0" style="transform: rotate(180deg);">❀</div>
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-16 animate-on-scroll">
+                <p class="font-script text-gold text-2xl md:text-3xl mb-2">Hoe het begon</p>
+                <h2 class="section-title">Ons Verhaal</h2>
+                <div class="section-divider"></div>
+            </div>
+
+            <!-- Timeline -->
+            <div class="timeline-wrapper" id="storyTimeline">
+                <div class="timeline-line hidden md:block"></div>
+                <div class="timeline-line-fill hidden md:block" id="storyLineFill"></div>
+
+                <!-- Timeline Item 1 -->
+                <div class="relative mb-10 md:mb-14 animate-on-scroll" data-tl-item>
+                    <div class="timeline-marker hidden md:block" data-tl-marker></div>
+                    <div class="md:grid md:grid-cols-2 md:gap-16 items-center">
+                        <div class="text-center md:text-right md:pr-12">
+                            <span class="font-sans text-xs tracking-[0.3em] text-gold uppercase font-medium">Juni 2018</span>
+                            <h3 class="font-serif text-2xl md:text-3xl font-light mt-2 mb-4">De Eerste Ontmoeting</h3>
+                            <p class="font-sans text-sm leading-relaxed font-light text-dark/70">Waar het allemaal begon.</p>
+                        </div>
+                        <div class="mt-6 md:mt-0 md:pl-12">
+                            <div class="tl-img-wrap shadow-lg tl-float">
+                                <div class="tl-frame"></div>
+                                <img src="1e%20ontmoeting.png" alt="De eerste ontmoeting" class="tl-img-inner w-full aspect-[4/3] object-cover">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 2 -->
+                <div class="relative mb-10 md:mb-14 animate-on-scroll" style="transition-delay: 200ms;" data-tl-item>
+                    <div class="timeline-marker hidden md:block" data-tl-marker></div>
+                    <div class="flex flex-col md:grid md:grid-cols-2 md:gap-16 items-center">
+                        <div class="order-2 md:order-1 mt-6 md:mt-0 md:pr-12">
+                            <div class="tl-img-wrap shadow-lg tl-float">
+                                <div class="tl-frame"></div>
+                                <img src="1e%20app.png" alt="Ons appartement" class="tl-img-inner w-full aspect-[4/3] object-cover">
+                            </div>
+                        </div>
+                        <div class="order-1 md:order-2 text-center md:text-left md:pl-12">
+                            <span class="font-sans text-xs tracking-[0.3em] text-gold uppercase font-medium">April 2024</span>
+                            <h3 class="font-serif text-2xl md:text-3xl font-light mt-2 mb-4">Ons Appartement</h3>
+                            <p class="font-sans text-sm leading-relaxed font-light text-dark/70">Ons eerste echte thuis samen.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 3 -->
+                <div class="relative mb-10 md:mb-14 animate-on-scroll" style="transition-delay: 400ms;" data-tl-item>
+                    <div class="timeline-marker hidden md:block" data-tl-marker></div>
+                    <div class="md:grid md:grid-cols-2 md:gap-16 items-center">
+                        <div class="text-center md:text-right md:pr-12">
+                            <span class="font-sans text-xs tracking-[0.3em] text-gold uppercase font-medium">Juli 2025</span>
+                            <h3 class="font-serif text-2xl md:text-3xl font-light mt-2 mb-4">Het Aanzoek</h3>
+                            <p class="font-sans text-sm leading-relaxed font-light text-dark/70">Ze zei ja!</p>
+                        </div>
+                        <div class="mt-6 md:mt-0 md:pl-12">
+                            <div class="tl-img-wrap shadow-lg tl-float">
+                                <div class="tl-frame"></div>
+                                <img src="aanzoek.png" alt="Het aanzoek" class="tl-img-inner w-full aspect-[4/3] object-cover">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 4 -->
+                <div class="relative animate-on-scroll" style="transition-delay: 600ms;" data-tl-item>
+                    <div class="timeline-marker hidden md:block" data-tl-marker></div>
+                    <div class="flex flex-col md:grid md:grid-cols-2 md:gap-16 items-center">
+                        <div class="order-2 md:order-1 mt-6 md:mt-0 md:pr-12">
+                            <div class="tl-img-wrap shadow-lg tl-float">
+                                <div class="tl-frame"></div>
+                                <img src="trouw.png" alt="De grote dag" class="tl-img-inner w-full aspect-[4/3] object-cover">
+                            </div>
+                        </div>
+                        <div class="order-1 md:order-2 text-center md:text-left md:pl-12">
+                            <span class="font-sans text-xs tracking-[0.3em] text-gold uppercase font-medium">Mei 2027</span>
+                            <h3 class="font-serif text-2xl md:text-3xl font-light mt-2 mb-4">De Grote Dag</h3>
+                            <p class="font-sans text-sm leading-relaxed font-light text-dark/70">Het begin van voor altijd.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Infinity symbol -->
+                <div class="flex justify-center mt-6">
+                    <svg width="48" height="24" viewBox="0 0 48 24" fill="none" class="timeline-infinity">
+                        <path d="M12 12C12 7 7 2 4 6C1 10 4 18 12 12C20 6 23 2 26 6C29 10 26 18 18 12" stroke="#C9A84C" stroke-width="0" fill="none"/>
+                        <path d="M14 12C14 6.5 8.5 2.5 5 6.5C1.5 10.5 5 17.5 14 12C23 6.5 26.5 2.5 30 6.5C33.5 10.5 30 17.5 21 12" stroke="#C9A84C" stroke-width="0" fill="none"/>
+                        <path d="M24 12C18 17 13 20 8 16C3 12 3 4 8 4C13 4 18 7 24 12C30 17 35 20 40 16C45 12 45 4 40 4C35 4 30 7 24 12Z" stroke="#C9A84C" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"
+                              stroke-dasharray="120" stroke-dashoffset="120" class="infinity-path"/>
+                    </svg>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- PROGRAMMA SECTION -->
+    <section id="programma" class="py-14 md:py-20 bg-cream relative">
+        <div class="max-w-3xl mx-auto px-6">
+            <div class="text-center mb-10 animate-on-scroll">
+                <p class="font-script text-gold text-2xl md:text-3xl mb-2">Hoe de dag verloopt</p>
+                <h2 class="section-title">Het Programma</h2>
+                <div class="section-divider"></div>
+            </div>
+
+            <div class="program-timeline" id="programTimeline">
+                <div class="program-line"></div>
+                <div class="program-line-fill" id="programLineFill"></div>
+
+                <div class="space-y-3 md:space-y-4">
+
+                    <!-- 15:00 — left -->
+                    <div class="program-item" data-program-item>
+                        <div class="program-item-left">
+                            <div class="program-icon" style="margin-left: auto;">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.5"><path d="M17 8l4 4-4 4"/><path d="M3 12h18"/><path d="M7 8l-4 4 4 4"/></svg>
+                            </div>
+                            <div class="program-time">15:00</div>
+                            <div class="program-title">Ontvangst</div>
+                            <div class="program-desc">Welkomstdrankje in de kasteeltuin</div>
+                        </div>
+                        <div class="program-dot-wrap">
+                            <div class="program-dot"></div>
+                            <div class="program-dot-ring"></div>
+                        </div>
+                        <div class="program-item-right md:hidden">
+                            <div class="program-time">15:00</div>
+                            <div class="program-title">Ontvangst</div>
+                            <div class="program-desc">Welkomstdrankje in de kasteeltuin</div>
+                        </div>
+                        <div class="program-item-right hidden md:block"></div>
+                    </div>
+
+                    <!-- 16:00 — right -->
+                    <div class="program-item" data-program-item>
+                        <div class="program-item-left hidden md:block"></div>
+                        <div class="program-dot-wrap">
+                            <div class="program-dot"></div>
+                            <div class="program-dot-ring"></div>
+                        </div>
+                        <div class="program-item-right">
+                            <div class="program-icon">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                            </div>
+                            <div class="program-time">16:00</div>
+                            <div class="program-title">Ceremonie</div>
+                            <div class="program-desc">Het mooiste moment van de dag</div>
+                        </div>
+                    </div>
+
+                    <!-- 17:00 — left -->
+                    <div class="program-item" data-program-item>
+                        <div class="program-item-left">
+                            <div class="program-icon" style="margin-left: auto;">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                            </div>
+                            <div class="program-time">17:00</div>
+                            <div class="program-title">Receptie & Groepsfoto</div>
+                            <div class="program-desc">Klinken op de liefde</div>
+                        </div>
+                        <div class="program-dot-wrap">
+                            <div class="program-dot"></div>
+                            <div class="program-dot-ring"></div>
+                        </div>
+                        <div class="program-item-right md:hidden">
+                            <div class="program-time">17:00</div>
+                            <div class="program-title">Receptie & Groepsfoto</div>
+                            <div class="program-desc">Klinken op de liefde</div>
+                        </div>
+                        <div class="program-item-right hidden md:block"></div>
+                    </div>
+
+                    <!-- 18:30 — right -->
+                    <div class="program-item" data-program-item>
+                        <div class="program-item-left hidden md:block"></div>
+                        <div class="program-dot-wrap">
+                            <div class="program-dot"></div>
+                            <div class="program-dot-ring"></div>
+                        </div>
+                        <div class="program-item-right">
+                            <div class="program-icon">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.5"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+                            </div>
+                            <div class="program-time">18:30</div>
+                            <div class="program-title">Diner</div>
+                            <div class="program-desc">Een feestelijk diner met onze dierbaren</div>
+                        </div>
+                    </div>
+
+                    <!-- 21:00 — left -->
+                    <div class="program-item" data-program-item>
+                        <div class="program-item-left">
+                            <div class="program-icon" style="margin-left: auto;">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.5"><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="18.5" cy="17.5" r="3.5"/><path d="M9 17.5h6"/><path d="M12 2v6"/><path d="M9 5l3 3 3-3"/></svg>
+                            </div>
+                            <div class="program-time">21:00</div>
+                            <div class="program-title">Openingsdans & Feest</div>
+                            <div class="program-desc">De dansvloer is geopend!</div>
+                        </div>
+                        <div class="program-dot-wrap">
+                            <div class="program-dot"></div>
+                            <div class="program-dot-ring"></div>
+                        </div>
+                        <div class="program-item-right md:hidden">
+                            <div class="program-time">21:00</div>
+                            <div class="program-title">Openingsdans & Feest</div>
+                            <div class="program-desc">De dansvloer is geopend!</div>
+                        </div>
+                        <div class="program-item-right hidden md:block"></div>
+                    </div>
+
+                    <!-- 01:00 — right -->
+                    <div class="program-item" data-program-item>
+                        <div class="program-item-left hidden md:block"></div>
+                        <div class="program-dot-wrap">
+                            <div class="program-dot"></div>
+                            <div class="program-dot-ring"></div>
+                        </div>
+                        <div class="program-item-right">
+                            <div class="program-icon">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.5"><path d="M17 18a5 5 0 0 0-10 0"/><line x1="12" y1="9" x2="12" y2="2"/><line x1="4.22" y1="10.22" x2="5.64" y2="11.64"/><line x1="1" y1="18" x2="3" y2="18"/><line x1="21" y1="18" x2="23" y2="18"/><line x1="18.36" y1="11.64" x2="19.78" y2="10.22"/><line x1="23" y1="22" x2="1" y2="22"/><polyline points="8 6 12 2 16 6"/></svg>
+                            </div>
+                            <div class="program-time">01:00</div>
+                            <div class="program-title">Afsluiting</div>
+                            <div class="program-desc">Laatste dans en tot weerziens</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LOCATIE SECTION -->
+    <section id="locatie" class="py-20 md:py-28 bg-cream-dark alt-bg relative">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-16 animate-on-scroll">
+                <p class="font-script text-gold text-2xl md:text-3xl mb-2">Waar het gebeurt</p>
+                <h2 class="section-title">De Locatie</h2>
+                <div class="section-divider"></div>
+            </div>
+
+            <div class="md:grid md:grid-cols-2 gap-12 items-start">
+                <!-- Location image -->
+                <div class="animate-on-scroll">
+                    <div class="rounded-sm overflow-hidden shadow-xl">
+                        <div class="bg-sage/15 aspect-[4/3] flex items-center justify-center">
+                            <span class="text-sage font-sans text-xs tracking-widest uppercase">Locatie Foto — Kasteel van Zwijnaarde</span>
+                        </div>
+                    </div>
+                    <div class="map-container mt-6">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2510.5!2d3.7211251!3d51.0006716!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c37137e45e9b8d%3A0x52fa005e4640e696!2sKasteel%20van%20Zwijnaarde!5e0!3m2!1snl!2sbe"
+                            width="100%"
+                            height="250"
+                            style="border:0;"
+                            allowfullscreen=""
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                </div>
+
+                <!-- Location info -->
+                <div class="mt-10 md:mt-0">
+                    <div class="animate-on-scroll">
+                        <h3 class="font-serif text-2xl md:text-3xl font-light mb-2">Kasteel van Zwijnaarde</h3>
+                        <p class="font-sans text-sm text-dark/60 font-light mb-8">Een sprookjesachtige locatie voor een onvergetelijke dag</p>
+                    </div>
+
+                    <!-- Address -->
+                    <div class="flex items-start gap-4 mb-8 animate-on-scroll" style="transition-delay: 100ms;">
+                        <div class="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                <circle cx="12" cy="10" r="3"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h4 class="font-sans text-sm font-medium tracking-wide uppercase mb-1">Adres</h4>
+                            <p class="font-sans text-sm text-dark/70 font-light">Joachim Schayckstraat 6<br>9052 Zwijnaarde (Gent)<br>België</p>
+                        </div>
+                    </div>
+
+                    <!-- Parking -->
+                    <div class="flex items-start gap-4 mb-8 animate-on-scroll" style="transition-delay: 200ms;">
+                        <div class="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="1" y="3" width="15" height="13" rx="2"/>
+                                <path d="M16 8h2a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-1"/>
+                                <circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h4 class="font-sans text-sm font-medium tracking-wide uppercase mb-1">Parkeren</h4>
+                            <p class="font-sans text-sm text-dark/70 font-light">Gratis parking beschikbaar op het kasteeldomein. Volg de borden bij aankomst.</p>
+                        </div>
+                    </div>
+
+                    <!-- Public transport -->
+                    <div class="flex items-start gap-4 mb-8 animate-on-scroll" style="transition-delay: 300ms;">
+                        <div class="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="4" y="3" width="16" height="16" rx="2"/><path d="M4 11h16"/><path d="M12 3v8"/>
+                                <circle cx="8" cy="15" r="1"/><circle cx="16" cy="15" r="1"/>
+                                <path d="M8 19l-2 3"/><path d="M16 19l2 3"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h4 class="font-sans text-sm font-medium tracking-wide uppercase mb-1">Openbaar Vervoer</h4>
+                            <p class="font-sans text-sm text-dark/70 font-light">Trein naar Gent-Sint-Pieters, daarna tram T3 + 10 min stappen.</p>
+                        </div>
+                    </div>
+
+                    <!-- Accommodation -->
+                    <div class="flex items-start gap-4 mb-8 animate-on-scroll" style="transition-delay: 400ms;">
+                        <div class="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M3 21h18"/><path d="M3 7v14"/><path d="M21 7v14"/>
+                                <path d="M3 7l9-4 9 4"/><rect x="7" y="11" width="4" height="6"/><rect x="13" y="11" width="4" height="6"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h4 class="font-sans text-sm font-medium tracking-wide uppercase mb-1">Overnachten</h4>
+                            <p class="font-sans text-sm text-dark/70 font-light">Er zijn verschillende hotels en B&B's in de buurt. Wij raden graag enkele opties aan — neem contact met ons op.</p>
+                        </div>
+                    </div>
+
+                    <!-- Route button -->
+                    <div class="animate-on-scroll" style="transition-delay: 500ms;">
+                        <a href="https://www.google.com/maps/dir//Kasteel+van+Zwijnaarde" target="_blank" rel="noopener noreferrer"
+                           class="inline-flex items-center gap-2 border border-gold text-gold font-sans text-xs tracking-[0.15em] uppercase py-3 px-6 hover:bg-gold hover:text-white transition-all duration-300">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <polygon points="3 11 22 2 13 21 11 13 3 11"/>
+                            </svg>
+                            Routebeschrijving
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DRESSCODE SECTION -->
+    <section id="dresscode" class="py-20 md:py-28 bg-cream relative">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="text-center mb-16 animate-on-scroll">
+                <p class="font-script text-gold text-2xl md:text-3xl mb-2">Wat trek je aan?</p>
+                <h2 class="section-title">Dresscode & Thema</h2>
+                <div class="section-divider"></div>
+            </div>
+
+            <div class="md:grid md:grid-cols-2 gap-12 items-center">
+                <!-- Mood collage placeholder -->
+                <div class="animate-on-scroll">
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="bg-sage/15 aspect-square rounded-sm flex items-center justify-center">
+                            <span class="text-sage font-sans text-[0.6rem] tracking-widest uppercase">Thema</span>
+                        </div>
+                        <div class="bg-dusty/15 aspect-[3/4] rounded-sm flex items-center justify-center">
+                            <span class="text-dusty font-sans text-[0.6rem] tracking-widest uppercase">Sfeer</span>
+                        </div>
+                        <div class="bg-gold/10 aspect-[3/4] rounded-sm flex items-center justify-center">
+                            <span class="text-gold font-sans text-[0.6rem] tracking-widest uppercase">Kleur</span>
+                        </div>
+                        <div class="bg-cream-dark aspect-square rounded-sm flex items-center justify-center">
+                            <span class="text-dark/30 font-sans text-[0.6rem] tracking-widest uppercase">Detail</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dresscode info -->
+                <div class="mt-10 md:mt-0 animate-on-scroll" style="transition-delay: 200ms;">
+                    <!-- Dress icons -->
+                    <div class="flex items-center gap-6 mb-8">
+                        <div class="text-center">
+                            <svg width="40" height="50" viewBox="0 0 40 50" fill="none" stroke="#C9A84C" stroke-width="1" class="mx-auto">
+                                <path d="M12 2 L20 8 L28 2 L28 14 L34 22 L28 22 L30 48 L10 48 L12 22 L6 22 L12 14 Z"/>
+                            </svg>
+                            <span class="font-sans text-[0.6rem] tracking-widest uppercase text-dark/50 mt-2 block">Kostuum</span>
+                        </div>
+                        <div class="text-gold text-xl">&</div>
+                        <div class="text-center">
+                            <svg width="40" height="50" viewBox="0 0 40 50" fill="none" stroke="#C9A84C" stroke-width="1" class="mx-auto">
+                                <path d="M14 2 Q12 8 10 14 L8 22 Q20 26 32 22 L30 14 Q28 8 26 2 Q20 6 14 2 Z"/>
+                                <path d="M8 22 Q6 35 8 48 L32 48 Q34 35 32 22"/>
+                            </svg>
+                            <span class="font-sans text-[0.6rem] tracking-widest uppercase text-dark/50 mt-2 block">Jurk</span>
+                        </div>
+                    </div>
+
+                    <p class="font-sans text-sm leading-relaxed font-light text-dark/70 mb-6">
+                        We dromen van een elegant en tijdloos feest. Laat je inspireren door ons kleurenpalet en geniet van een stijlvolle dag samen met ons. Denk aan chic formeel — een mooi pak of een elegante jurk.
+                    </p>
+
+                    <!-- Color palette -->
+                    <p class="font-sans text-xs tracking-[0.2em] uppercase text-dark/40 mb-4">Kleurenpalet</p>
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="text-center">
+                            <div class="color-swatch" style="background: #FDF8F0;"></div>
+                            <span class="font-sans text-[0.55rem] tracking-wider text-dark/40 mt-2 block">Crème</span>
+                        </div>
+                        <div class="text-center">
+                            <div class="color-swatch" style="background: #C9A84C;"></div>
+                            <span class="font-sans text-[0.55rem] tracking-wider text-dark/40 mt-2 block">Goud</span>
+                        </div>
+                        <div class="text-center">
+                            <div class="color-swatch" style="background: #A3B18A;"></div>
+                            <span class="font-sans text-[0.55rem] tracking-wider text-dark/40 mt-2 block">Salie</span>
+                        </div>
+                        <div class="text-center">
+                            <div class="color-swatch" style="background: #D4A5A5;"></div>
+                            <span class="font-sans text-[0.55rem] tracking-wider text-dark/40 mt-2 block">Stoffig Roze</span>
+                        </div>
+                        <div class="text-center">
+                            <div class="color-swatch" style="background: #2C2C2C;"></div>
+                            <span class="font-sans text-[0.55rem] tracking-wider text-dark/40 mt-2 block">Donker</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-white/60 rounded-sm p-5 border border-gold/10">
+                        <p class="font-sans text-xs text-dark/50 font-light leading-relaxed">
+                            <span class="text-sage font-medium">✓</span> Elegante pakken, jurken, jumpsuits<br>
+                            <span class="text-sage font-medium">✓</span> Aardekleuren, pasteltinten, jewel tones<br>
+                            <span class="text-dusty font-medium">✗</span> Liever geen wit (dat is voor de bruid!)<br>
+                            <span class="text-dusty font-medium">✗</span> Liever geen jeans of sneakers
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CADEAU SECTION -->
+    <section id="cadeau" class="py-20 md:py-28 bg-cream-dark alt-bg relative">
+        <div class="max-w-3xl mx-auto px-6 text-center">
+            <div class="animate-on-scroll">
+                <p class="font-script text-gold text-2xl md:text-3xl mb-2">Van harte</p>
+                <h2 class="section-title">Cadeautip</h2>
+                <div class="section-divider"></div>
+            </div>
+
+            <div class="animate-on-scroll ornament-corner inline-block" style="transition-delay: 200ms;">
+                <div class="bg-white/60 rounded-sm p-8 md:p-12 border border-gold/10 max-w-xl mx-auto">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1" class="mx-auto mb-6">
+                        <polyline points="20 12 20 22 4 22 4 12"/>
+                        <rect x="2" y="7" width="20" height="5"/>
+                        <line x1="12" y1="22" x2="12" y2="7"/>
+                        <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/>
+                        <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/>
+                    </svg>
+                    <p class="font-sans text-sm leading-relaxed font-light text-dark/70 mb-6">
+                        Jullie aanwezigheid is het mooiste geschenk. Mochten jullie ons toch iets willen geven, dan dragen we graag bij aan onze huwelijksreis — een onvergetelijk avontuur samen als kersvers echtpaar.
+                    </p>
+                    <button onclick="toggleGiftPanel()" class="inline-flex items-center gap-2 text-gold font-sans text-xs tracking-[0.15em] uppercase hover:text-gold-dark transition-colors duration-300 cursor-pointer">
+                        <span id="giftToggleText">Meer informatie</span>
+                        <svg id="giftToggleIcon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-300">
+                            <polyline points="6 9 12 15 18 9"/>
+                        </svg>
+                    </button>
+
+                    <div class="gift-panel mt-4 bg-cream/50 rounded-sm text-left" id="giftPanel">
+                        <p class="font-sans text-xs text-dark/60 font-light mb-3">
+                            Indien je graag een bijdrage wilt doen, kan dit op het volgende rekeningnummer:
+                        </p>
+                        <div class="bg-white/80 rounded-sm p-4 border border-gold/10">
+                            <p class="font-sans text-sm font-medium text-dark/80">Judith & Simon</p>
+                            <p class="font-sans text-sm text-dark/60 font-light mt-1">BE00 0000 0000 0000</p>
+                            <p class="font-sans text-xs text-dark/40 font-light mt-1">Met vermelding: "Huwelijkscadeau"</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RSVP SECTION -->
+    <section id="rsvp" class="py-20 md:py-28 bg-cream relative">
+        <div class="max-w-2xl mx-auto px-6">
+            <div class="text-center mb-12 animate-on-scroll">
+                <p class="font-script text-gold text-2xl md:text-3xl mb-2">Laat het ons weten</p>
+                <h2 class="section-title">RSVP</h2>
+                <div class="section-divider"></div>
+                <p class="font-sans text-sm text-dark/60 font-light">
+                    Laat ons weten of je erbij bent!<br>Gelieve te bevestigen vóór <span class="text-gold font-medium">1 maart 2027</span>.
+                </p>
+            </div>
+
+            <form id="rsvpForm" class="space-y-6 animate-on-scroll" style="transition-delay: 200ms;" onsubmit="handleRSVP(event)">
+                <!-- Name -->
+                <div>
+                    <label class="font-sans text-xs tracking-[0.15em] uppercase text-dark/50 mb-2 block">Naam *</label>
+                    <input type="text" class="form-input" placeholder="Jouw volledige naam" required>
+                </div>
+
+                <!-- Email -->
+                <div>
+                    <label class="font-sans text-xs tracking-[0.15em] uppercase text-dark/50 mb-2 block">E-mailadres *</label>
+                    <input type="email" class="form-input" placeholder="jouw@email.com" required>
+                </div>
+
+                <!-- Attendance -->
+                <div>
+                    <label class="font-sans text-xs tracking-[0.15em] uppercase text-dark/50 mb-3 block">Aanwezig? *</label>
+                    <div class="rsvp-toggle">
+                        <button type="button" class="rsvp-toggle-btn selected" onclick="selectAttendance(this, 'ja')">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="inline mr-1 -mt-0.5">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                            </svg>
+                            Ja, ik ben erbij!
+                        </button>
+                        <button type="button" class="rsvp-toggle-btn" onclick="selectAttendance(this, 'nee')">
+                            Helaas niet
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Number of guests -->
+                <div id="guestCountSection">
+                    <label class="font-sans text-xs tracking-[0.15em] uppercase text-dark/50 mb-3 block">Aantal personen</label>
+                    <div class="flex items-center gap-4">
+                        <button type="button" class="counter-btn" onclick="adjustCount(-1)">−</button>
+                        <span id="guestCount" class="font-serif text-2xl w-10 text-center">1</span>
+                        <button type="button" class="counter-btn" onclick="adjustCount(1)">+</button>
+                    </div>
+                </div>
+
+                <!-- Dietary -->
+                <div>
+                    <label class="font-sans text-xs tracking-[0.15em] uppercase text-dark/50 mb-2 block">Dieetwensen of allergieën</label>
+                    <textarea class="form-input" rows="2" placeholder="Vegetarisch, glutenvrij, allergieën..."></textarea>
+                </div>
+
+                <!-- Message -->
+                <div>
+                    <label class="font-sans text-xs tracking-[0.15em] uppercase text-dark/50 mb-2 block">Een lief woordje voor ons</label>
+                    <textarea class="form-input" rows="3" placeholder="Deel een wens, herinnering of gewoon een lief bericht..."></textarea>
+                </div>
+
+                <!-- Submit -->
+                <div class="text-center pt-4">
+                    <button type="submit" class="btn-gold">Bevestigen</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- RSVP Confirmation Overlay -->
+    <div class="rsvp-confirmation" id="rsvpConfirmation">
+        <div class="text-center px-6">
+            <p class="font-script text-gold text-4xl md:text-5xl mb-4">Dankjewel!</p>
+            <h3 class="font-serif text-2xl md:text-3xl font-light mb-4">We hebben je antwoord ontvangen</h3>
+            <p class="font-sans text-sm text-dark/60 font-light mb-8">We kijken ernaar uit om deze bijzondere dag met jou te delen.</p>
+            <button onclick="closeConfirmation()" class="inline-flex items-center gap-2 border border-gold text-gold font-sans text-xs tracking-[0.15em] uppercase py-3 px-6 hover:bg-gold hover:text-white transition-all duration-300 cursor-pointer">
+                Sluiten
+            </button>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="py-16 bg-dark text-white/80 relative">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <div class="font-serif text-4xl font-light mb-2">
+                J <span class="font-script text-gold text-3xl">&</span> S
+            </div>
+            <p class="font-sans text-xs tracking-[0.4em] uppercase text-white/40 mb-8">22 · 05 · 2027</p>
+
+            <div class="w-16 h-px bg-gold/30 mx-auto mb-8"></div>
+
+            <p class="font-serif text-lg italic text-white/50 font-light max-w-md mx-auto mb-8">
+                "De beste liefdesverhalen zijn degene die nooit eindigen."
+            </p>
+
+            <p class="font-sans text-xs text-white/30 font-light tracking-wider">
+                Vragen? Neem contact op via
+                <a href="mailto:judith.simon@email.com" class="text-gold/70 hover:text-gold transition-colors">judith.simon@email.com</a>
+            </p>
+
+            <div class="flex items-center justify-center gap-4 mt-6">
+                <a href="#" class="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center hover:border-gold/50 hover:text-gold transition-all duration-300">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+                    </svg>
+                </a>
+            </div>
+
+            <p class="font-sans text-[0.6rem] text-white/15 mt-10 tracking-wider">Met liefde gemaakt</p>
+        </div>
+    </footer>
+
+    <!-- Sparkle Canvas -->
+    <canvas class="sparkle-canvas" id="sparkleCanvas"></canvas>
+
+    <script>
+    // ============================================
+    // WEDDING SPARKLE EFFECT (Mouse + Touch)
+    // ============================================
+    const sparkleCanvas = document.getElementById('sparkleCanvas');
+    const ctx = sparkleCanvas.getContext('2d');
+    let particles = [];
+    let animFrameId;
+
+    function resizeCanvas() {
+        sparkleCanvas.width = window.innerWidth;
+        sparkleCanvas.height = window.innerHeight;
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    const sparkleColors = [
+        { r: 201, g: 168, b: 76 },   // gold
+        { r: 212, g: 185, b: 106 },   // light gold
+        { r: 255, g: 255, b: 255 },   // white
+        { r: 253, g: 248, b: 240 },   // cream
+        { r: 212, g: 165, b: 165 },   // dusty pink
+        { r: 163, g: 177, b: 138 },   // sage (subtle)
+    ];
+
+    class Sparkle {
+        constructor(x, y) {
+            this.x = x;
+            this.y = y;
+            const color = sparkleColors[Math.floor(Math.random() * sparkleColors.length)];
+            this.r = color.r;
+            this.g = color.g;
+            this.b = color.b;
+            this.size = Math.random() * 3.5 + 1;
+            this.life = 1;
+            this.decay = Math.random() * 0.025 + 0.015;
+            this.vx = (Math.random() - 0.5) * 1.8;
+            this.vy = (Math.random() - 0.5) * 1.8 - 0.5;
+            this.gravity = 0.02;
+            this.rotation = Math.random() * Math.PI * 2;
+            this.rotationSpeed = (Math.random() - 0.5) * 0.15;
+            // Randomly choose shape: 0 = star, 1 = circle, 2 = diamond
+            this.shape = Math.random() < 0.5 ? 0 : (Math.random() < 0.5 ? 1 : 2);
+        }
+
+        update() {
+            this.x += this.vx;
+            this.vy += this.gravity;
+            this.y += this.vy;
+            this.life -= this.decay;
+            this.rotation += this.rotationSpeed;
+            this.size *= 0.997;
+        }
+
+        draw(ctx) {
+            if (this.life <= 0) return;
+            ctx.save();
+            ctx.translate(this.x, this.y);
+            ctx.rotate(this.rotation);
+            ctx.globalAlpha = this.life * 0.85;
+
+            if (this.shape === 0) {
+                // 4-point star sparkle
+                this.drawStar(ctx);
+            } else if (this.shape === 1) {
+                // Soft circle glow
+                this.drawGlow(ctx);
+            } else {
+                // Small diamond
+                this.drawDiamond(ctx);
+            }
+
+            ctx.restore();
+        }
+
+        drawStar(ctx) {
+            const s = this.size;
+            ctx.fillStyle = `rgba(${this.r},${this.g},${this.b},${this.life})`;
+            ctx.beginPath();
+            // 4-pointed star
+            for (let i = 0; i < 4; i++) {
+                const angle = (i * Math.PI) / 2;
+                ctx.lineTo(Math.cos(angle) * s * 2, Math.sin(angle) * s * 2);
+                const midAngle = angle + Math.PI / 4;
+                ctx.lineTo(Math.cos(midAngle) * s * 0.5, Math.sin(midAngle) * s * 0.5);
+            }
+            ctx.closePath();
+            ctx.fill();
+
+            // Inner glow
+            ctx.globalAlpha = this.life * 0.4;
+            ctx.shadowColor = `rgba(${this.r},${this.g},${this.b},0.6)`;
+            ctx.shadowBlur = s * 3;
+            ctx.fill();
+        }
+
+        drawGlow(ctx) {
+            const gradient = ctx.createRadialGradient(0, 0, 0, 0, 0, this.size * 2);
+            gradient.addColorStop(0, `rgba(${this.r},${this.g},${this.b},${this.life * 0.9})`);
+            gradient.addColorStop(0.4, `rgba(${this.r},${this.g},${this.b},${this.life * 0.4})`);
+            gradient.addColorStop(1, `rgba(${this.r},${this.g},${this.b},0)`);
+            ctx.fillStyle = gradient;
+            ctx.beginPath();
+            ctx.arc(0, 0, this.size * 2, 0, Math.PI * 2);
+            ctx.fill();
+        }
+
+        drawDiamond(ctx) {
+            const s = this.size * 1.5;
+            ctx.fillStyle = `rgba(${this.r},${this.g},${this.b},${this.life})`;
+            ctx.beginPath();
+            ctx.moveTo(0, -s);
+            ctx.lineTo(s * 0.6, 0);
+            ctx.lineTo(0, s);
+            ctx.lineTo(-s * 0.6, 0);
+            ctx.closePath();
+            ctx.fill();
+        }
+    }
+
+    function spawnSparkles(x, y, count) {
+        for (let i = 0; i < count; i++) {
+            particles.push(new Sparkle(
+                x + (Math.random() - 0.5) * 20,
+                y + (Math.random() - 0.5) * 20
+            ));
+        }
+        // Cap particles for performance
+        if (particles.length > 300) {
+            particles = particles.slice(-300);
+        }
+    }
+
+    function animateSparkles() {
+        ctx.clearRect(0, 0, sparkleCanvas.width, sparkleCanvas.height);
+
+        particles = particles.filter(p => p.life > 0);
+
+        for (const p of particles) {
+            p.update();
+            p.draw(ctx);
+        }
+
+        animFrameId = requestAnimationFrame(animateSparkles);
+    }
+
+    animateSparkles();
+
+    // Throttle for touch to avoid excessive particles
+    let lastSparkleTime = 0;
+    const sparkleThrottle = 30; // ms
+
+    // Desktop: mousemove
+    document.addEventListener('mousemove', (e) => {
+        const now = Date.now();
+        if (now - lastSparkleTime < sparkleThrottle) return;
+        lastSparkleTime = now;
+        spawnSparkles(e.clientX, e.clientY, 3);
+    });
+
+    // Mobile: touchmove + touchstart
+    document.addEventListener('touchstart', (e) => {
+        for (const touch of e.changedTouches) {
+            spawnSparkles(touch.clientX, touch.clientY, 6);
+        }
+    }, { passive: true });
+
+    document.addEventListener('touchmove', (e) => {
+        const now = Date.now();
+        if (now - lastSparkleTime < sparkleThrottle) return;
+        lastSparkleTime = now;
+        for (const touch of e.changedTouches) {
+            spawnSparkles(touch.clientX, touch.clientY, 3);
+        }
+    }, { passive: true });
+
+    // ============================================
+    // NAVIGATION
+    // ============================================
+    const navbar = document.getElementById('navbar');
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-link[data-section]');
+
+    window.addEventListener('scroll', () => {
+        // Navbar background
+        if (window.scrollY > 80) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+
+        // Active section
+        let current = '';
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop - 200;
+            if (window.scrollY >= sectionTop) {
+                current = section.getAttribute('id');
+            }
+        });
+
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('data-section') === current) {
+                link.classList.add('active');
+            }
+        });
+    });
+
+    // Mobile menu
+    function toggleMobileMenu() {
+        const menu = document.getElementById('mobileMenu');
+        const hamburger = document.getElementById('hamburger');
+        menu.classList.toggle('open');
+        hamburger.classList.toggle('open');
+    }
+
+    function closeMobileMenu() {
+        document.getElementById('mobileMenu').classList.remove('open');
+        document.getElementById('hamburger').classList.remove('open');
+    }
+
+    // ============================================
+    // COUNTDOWN
+    // ============================================
+    const weddingDate = new Date('2027-05-22T15:00:00').getTime();
+
+    function updateCountdown() {
+        const now = new Date().getTime();
+        const diff = weddingDate - now;
+
+        if (diff < 0) {
+            document.getElementById('cd-days').textContent = '0';
+            document.getElementById('cd-hours').textContent = '0';
+            document.getElementById('cd-minutes').textContent = '0';
+            document.getElementById('cd-seconds').textContent = '0';
+            return;
+        }
+
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+        animateNumber('cd-days', days);
+        animateNumber('cd-hours', hours);
+        animateNumber('cd-minutes', minutes);
+        animateNumber('cd-seconds', seconds);
+    }
+
+    function animateNumber(id, value) {
+        const el = document.getElementById(id);
+        const current = el.textContent;
+        const newVal = String(value);
+        if (current !== newVal) {
+            el.style.transform = 'translateY(-4px)';
+            el.style.opacity = '0.5';
+            setTimeout(() => {
+                el.textContent = newVal;
+                el.style.transform = 'translateY(0)';
+                el.style.opacity = '1';
+            }, 150);
+        }
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    // ============================================
+    // SCROLL ANIMATIONS
+    // ============================================
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.animate-on-scroll').forEach(el => {
+        observer.observe(el);
+    });
+
+    // ============================================
+    // STORY TIMELINE — LINE FILL + MARKERS
+    // ============================================
+    const storyTimeline = document.getElementById('storyTimeline');
+    const storyLineFill = document.getElementById('storyLineFill');
+    const tlMarkers = document.querySelectorAll('[data-tl-marker]');
+
+    function updateStoryTimeline() {
+        if (!storyTimeline || !storyLineFill) return;
+
+        const rect = storyTimeline.getBoundingClientRect();
+        const timelineHeight = rect.height;
+        const viewH = window.innerHeight;
+
+        const progress = Math.min(1, Math.max(0,
+            (viewH * 0.5 - rect.top) / timelineHeight
+        ));
+
+        storyLineFill.style.height = (progress * timelineHeight) + 'px';
+
+        tlMarkers.forEach(marker => {
+            const markerTop = marker.offsetTop;
+            if (progress * timelineHeight > markerTop + 10) {
+                marker.classList.add('passed');
+            } else {
+                marker.classList.remove('passed');
+            }
+        });
+    }
+
+    window.addEventListener('scroll', updateStoryTimeline, { passive: true });
+    updateStoryTimeline();
+
+    // Infinity symbol draw-in
+    const infinitySvg = document.querySelector('.timeline-infinity');
+    if (infinitySvg) {
+        const infObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    infObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+        infObserver.observe(infinitySvg);
+    }
+
+    // Subtle parallax float on timeline images
+    const floatElements = document.querySelectorAll('.tl-float');
+    window.addEventListener('scroll', () => {
+        for (const el of floatElements) {
+            const rect = el.getBoundingClientRect();
+            const center = rect.top + rect.height / 2;
+            const viewCenter = window.innerHeight / 2;
+            const offset = (center - viewCenter) * 0.04;
+            el.style.transform = `translateY(${offset}px)`;
+        }
+    }, { passive: true });
+
+    // ============================================
+    // PROGRAM TIMELINE — LINE FILL + STAGGERED REVEAL
+    // ============================================
+    const programTimeline = document.getElementById('programTimeline');
+    const programLineFill = document.getElementById('programLineFill');
+    const programItems = document.querySelectorAll('[data-program-item]');
+
+    // Reveal items with stagger as they scroll into view
+    const programObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('revealed');
+                const dot = entry.target.querySelector('.program-dot');
+                if (dot) dot.classList.add('active');
+                programObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.3, rootMargin: '0px 0px -60px 0px' });
+
+    programItems.forEach((item, i) => {
+        // Add increasing transition delays for stagger
+        const icons = item.querySelectorAll('.program-icon');
+        icons.forEach(ic => { ic.style.transitionDelay = '0.15s'; });
+        programObserver.observe(item);
+    });
+
+    // Fill the line based on scroll progress through the section
+    function updateProgramLine() {
+        if (!programTimeline || !programLineFill) return;
+        const rect = programTimeline.getBoundingClientRect();
+        const timelineTop = rect.top;
+        const timelineHeight = rect.height;
+        const viewH = window.innerHeight;
+
+        // How far through the timeline section we've scrolled
+        const progress = Math.min(1, Math.max(0,
+            (viewH * 0.5 - timelineTop) / timelineHeight
+        ));
+
+        programLineFill.style.height = (progress * timelineHeight) + 'px';
+    }
+
+    window.addEventListener('scroll', updateProgramLine, { passive: true });
+    updateProgramLine();
+
+    // ============================================
+    // RSVP FORM
+    // ============================================
+    let attendance = 'ja';
+    let guestCount = 1;
+
+    function selectAttendance(btn, value) {
+        attendance = value;
+        document.querySelectorAll('.rsvp-toggle-btn').forEach(b => b.classList.remove('selected'));
+        btn.classList.add('selected');
+
+        const guestSection = document.getElementById('guestCountSection');
+        if (value === 'nee') {
+            guestSection.style.opacity = '0.3';
+            guestSection.style.pointerEvents = 'none';
+        } else {
+            guestSection.style.opacity = '1';
+            guestSection.style.pointerEvents = 'all';
+        }
+    }
+
+    function adjustCount(delta) {
+        guestCount = Math.max(1, Math.min(10, guestCount + delta));
+        document.getElementById('guestCount').textContent = guestCount;
+    }
+
+    function handleRSVP(e) {
+        e.preventDefault();
+
+        // Show confirmation
+        document.getElementById('rsvpConfirmation').classList.add('show');
+
+        // Create confetti
+        createConfetti();
+
+        // Reset form
+        e.target.reset();
+        guestCount = 1;
+        document.getElementById('guestCount').textContent = '1';
+    }
+
+    function closeConfirmation() {
+        document.getElementById('rsvpConfirmation').classList.remove('show');
+    }
+
+    function createConfetti() {
+        const colors = ['#C9A84C', '#D4B96A', '#A3B18A', '#D4A5A5', '#FDF8F0'];
+        const shapes = ['circle', 'square'];
+
+        for (let i = 0; i < 60; i++) {
+            setTimeout(() => {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti-piece';
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                const shape = shapes[Math.floor(Math.random() * shapes.length)];
+                const size = Math.random() * 10 + 5;
+
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.top = '-20px';
+                confetti.style.width = size + 'px';
+                confetti.style.height = size + 'px';
+                confetti.style.background = color;
+                confetti.style.borderRadius = shape === 'circle' ? '50%' : '2px';
+                confetti.style.animationDuration = (Math.random() * 2 + 2) + 's';
+                confetti.style.animationDelay = Math.random() * 0.5 + 's';
+
+                document.body.appendChild(confetti);
+                setTimeout(() => confetti.remove(), 4000);
+            }, i * 30);
+        }
+    }
+
+    // ============================================
+    // GIFT PANEL
+    // ============================================
+    function toggleGiftPanel() {
+        const panel = document.getElementById('giftPanel');
+        const icon = document.getElementById('giftToggleIcon');
+        const text = document.getElementById('giftToggleText');
+
+        panel.classList.toggle('open');
+
+        if (panel.classList.contains('open')) {
+            icon.style.transform = 'rotate(180deg)';
+            text.textContent = 'Minder tonen';
+        } else {
+            icon.style.transform = 'rotate(0deg)';
+            text.textContent = 'Meer informatie';
+        }
+    }
+
+    // ============================================
+    // SMOOTH SCROLL FOR NAV LINKS
+    // ============================================
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    });
+
+    </script>
+</body>
+</html>
