@@ -34,22 +34,13 @@
     <style>
         /* Base styles */
         * { margin: 0; padding: 0; box-sizing: border-box; }
-<<<<<<< HEAD
         html, body {
-=======
-        html {
->>>>>>> 9f06c7c206bf2c75168c88e8297cf9e12cee1a3b
             overflow-x: hidden;
         }
         body {
             font-family: 'Montserrat', sans-serif;
             background-color: #FDF8F0;
             color: #2C2C2C;
-<<<<<<< HEAD
-=======
-            overflow-x: hidden;
-            width: 100%;
->>>>>>> 9f06c7c206bf2c75168c88e8297cf9e12cee1a3b
         }
 
         /* Subtle background pattern */
@@ -692,6 +683,7 @@
         /* RSVP */
         .rsvp-toggle {
             display: flex;
+            flex-wrap: wrap;
             gap: 1rem;
         }
 
@@ -854,6 +846,13 @@
             right: -1rem;
         }
 
+        @media (max-width: 768px) {
+            .ornament-corner::before,
+            .ornament-corner::after {
+                display: none;
+            }
+        }
+
         /* Timeline image animations */
         .tl-img-wrap {
             position: relative;
@@ -939,6 +938,13 @@
             transition: transform 0.3s ease;
         }
 
+        @media (max-width: 768px) {
+            .color-swatch {
+                width: 48px;
+                height: 48px;
+            }
+        }
+
         .color-swatch:hover {
             transform: scale(1.1);
         }
@@ -968,6 +974,9 @@
         @media (max-width: 768px) {
             .floral-accent {
                 display: none;
+            }
+            section, footer {
+                overflow-x: hidden;
             }
         }
 
@@ -1508,7 +1517,7 @@
 
                     <!-- Color palette -->
                     <p class="font-sans text-xs tracking-[0.2em] uppercase text-dark/40 mb-4">Kleurenpalet</p>
-                    <div class="flex items-center gap-4 mb-6">
+                    <div class="flex flex-wrap items-center gap-3 md:gap-4 mb-6">
                         <div class="text-center">
                             <div class="color-swatch" style="background: #FDF8F0;"></div>
                             <span class="font-sans text-[0.55rem] tracking-wider text-dark/40 mt-2 block">Crème</span>
