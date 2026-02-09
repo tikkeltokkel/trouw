@@ -34,11 +34,13 @@
     <style>
         /* Base styles */
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body {
+            overflow-x: hidden;
+        }
         body {
             font-family: 'Montserrat', sans-serif;
             background-color: #FDF8F0;
             color: #2C2C2C;
-            overflow-x: hidden;
         }
 
         /* Subtle background pattern */
@@ -954,6 +956,12 @@
             color: #C9A84C;
         }
 
+        @media (max-width: 768px) {
+            .floral-accent {
+                display: none;
+            }
+        }
+
         /* Smooth number transition */
         .flip-number {
             display: inline-block;
@@ -967,16 +975,18 @@
             box-shadow: 0 10px 40px rgba(0,0,0,0.1);
         }
 
-        /* Custom scrollbar */
-        ::-webkit-scrollbar {
-            width: 6px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #FDF8F0;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #C9A84C;
-            border-radius: 3px;
+        /* Custom scrollbar — only on desktop to avoid white bar on mobile */
+        @media (min-width: 769px) {
+            ::-webkit-scrollbar {
+                width: 6px;
+            }
+            ::-webkit-scrollbar-track {
+                background: #FDF8F0;
+            }
+            ::-webkit-scrollbar-thumb {
+                background: #C9A84C;
+                border-radius: 3px;
+            }
         }
 
         /* Confirmation overlay */
