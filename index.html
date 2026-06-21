@@ -2234,17 +2234,19 @@
         infObserver.observe(infinitySvg);
     }
 
-    // Subtle parallax float on timeline images
+    // Subtle parallax float on timeline images — desktop only
     const floatElements = document.querySelectorAll('.tl-float');
-    window.addEventListener('scroll', () => {
-        for (const el of floatElements) {
-            const rect = el.getBoundingClientRect();
-            const center = rect.top + rect.height / 2;
-            const viewCenter = window.innerHeight / 2;
-            const offset = (center - viewCenter) * 0.04;
-            el.style.transform = `translateY(${offset}px)`;
-        }
-    }, { passive: true });
+    if (window.innerWidth > 768) {
+        window.addEventListener('scroll', () => {
+            for (const el of floatElements) {
+                const rect = el.getBoundingClientRect();
+                const center = rect.top + rect.height / 2;
+                const viewCenter = window.innerHeight / 2;
+                const offset = (center - viewCenter) * 0.04;
+                el.style.transform = `translateY(${offset}px)`;
+            }
+        }, { passive: true });
+    }
 
     // ============================================
     // PROGRAM TIMELINE — LINE FILL + STAGGERED REVEAL
